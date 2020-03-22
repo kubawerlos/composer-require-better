@@ -4,6 +4,8 @@ Plugin for [Composer](https://getcomposer.org) to require package with constrain
 
 [![Current version](https://img.shields.io/packagist/v/kubawerlos/composer-require-better.svg?label=Current%20version)](https://packagist.org/packages/kubawerlos/composer-require-better)
 [![PHP version](https://img.shields.io/packagist/php-v/kubawerlos/composer-require-better.svg)](https://php.net)
+[![CI Status](https://github.com/kubawerlos/composer-require-better/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/kubawerlos/composer-require-better/actions)
+[![Psalm type coverage](https://shepherd.dev/github/kubawerlos/composer-require-better/coverage.svg)](https://shepherd.dev/github/kubawerlos/composer-require-better)
 
 
 ## Installation
