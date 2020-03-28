@@ -17,7 +17,7 @@
             "composer validate --strict --working-dir=..",
             "composer normalize --dry-run ../composer.json",
             "composer-require-checker check ../composer.json",
-            "phpcs --exclude=Generic.Files.LineLength --report-full --standard=PSR2 ../src ../tests",
+            "phpcs",
             "php-cs-fixer fix --ansi --diff --dry-run --verbose",
             "types-checker --autoloader=../vendor/autoload.php ../src ../tests",
             "phpmd ../src text ./phpmd.xml",
@@ -26,6 +26,7 @@
         ],
         "fix": [
             "composer normalize ../composer.json",
+            "phpcbf || return 0",
             "php-cs-fixer fix --ansi --verbose || return 0"
         ]
     }
