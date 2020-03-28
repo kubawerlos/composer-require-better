@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Tests;
 
@@ -195,12 +195,14 @@ final class RequireBetterCommandTest extends TestCase
      */
     public static function provideWithCustomRepositoryCases(): iterable
     {
-        foreach ([
-            '1.2.3' => '^1.2.3',
-            'v1.2.3' => '^1.2.3',
-            'v1.2' => '^1.2.0',
-            'v1' => '^1.0.0',
-        ] as $customRepositoryVersion => $expectedConstraint) {
+        foreach (
+            [
+                '1.2.3' => '^1.2.3',
+                'v1.2.3' => '^1.2.3',
+                'v1.2' => '^1.2.0',
+                'v1' => '^1.0.0',
+            ] as $customRepositoryVersion => $expectedConstraint
+        ) {
             yield $customRepositoryVersion => [$expectedConstraint, $customRepositoryVersion];
         }
     }
