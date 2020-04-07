@@ -16,6 +16,14 @@ final class RequireBetterPlugin implements Capable, CommandProvider, PluginInter
     {
     }
 
+    public function deactivate(Composer $composer, IOInterface $io): void
+    {
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io): void
+    {
+    }
+
     public function getCapabilities(): array
     {
         return [CommandProvider::class => self::class];

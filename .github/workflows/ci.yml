@@ -35,6 +35,9 @@ jobs:
             php-version: '7.2'
           - os: ubuntu-latest
             php-version: '7.3'
+          - os: ubuntu-latest
+            php-version: '7.3'
+            dev_package: 'composer/composer:^2.0@dev'
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -59,6 +62,12 @@ jobs:
 
       - name: Install dependencies
         run: composer update --no-progress --no-suggest ${{ matrix.composer_flags }}
+
+      - name: Install dev package
+        if: matrix.dev_package
+        run: |
+          composer config minimum-stability dev
+          composer require "${{ matrix.dev_package }}" --prefer-stable --update-with-dependencies
 
       - name: Test
         run: composer test -- --coverage-clover=./build/logs/clover.xml
