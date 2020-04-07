@@ -4,7 +4,6 @@ parameters:
   level: max
   paths:
     - ../src
-    - ../tests
 
 includes:
   - ./vendor/phpstan/phpstan-strict-rules/rules.neon
