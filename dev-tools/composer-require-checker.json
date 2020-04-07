@@ -1,0 +1,10 @@
+{
+    "symbol-whitelist": [
+        "array",
+        "int",
+        "parent",
+        "self",
+        "string",
+        "void"
+    ]
+}

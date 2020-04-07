@@ -16,6 +16,9 @@
     </projectFiles>
 
     <issueHandlers>
+        <MixedArgument errorLevel='suppress' />
+        <MixedAssignment errorLevel='suppress' />
+        <MixedMethodCall errorLevel='suppress' />
         <PropertyNotSetInConstructor errorLevel='suppress' />
         <UnusedClass errorLevel='suppress' />
     </issueHandlers>
