@@ -83,10 +83,8 @@ final class RequireBetterCommand extends RequireCommand
 
         $package = $require['name'];
 
-        $pool = new Pool();
-        $pool->addRepository($this->getRepository());
+        $versionSelector = $this->getVersionSelector();
 
-        $versionSelector = new VersionSelector($pool);
         $bestCandidate = $versionSelector->findBestCandidate($package, '*', $targetPhpVersion);
 
         if (!$bestCandidate instanceof PackageInterface) {
@@ -102,6 +100,15 @@ final class RequireBetterCommand extends RequireCommand
         ));
 
         return \sprintf('%s:%s', $package, $version);
+    }
+
+    private function getVersionSelector(): VersionSelector
+    {
+        $object = new Pool();
+
+        $object->addRepository($this->getRepository());
+
+        return new VersionSelector($object);
     }
 
     private function getTargetPhpVersion(): string
