@@ -61,6 +61,8 @@ final class RequireBetterPluginTest extends TestCase
     public static function providePluginInterfaceUsageDoesNotUsePluginManagerCases(): iterable
     {
         yield ['activate'];
+        yield ['deactivate'];
+        yield ['uninstall'];
     }
 
     public function testCapabilities(): void

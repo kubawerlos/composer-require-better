@@ -10,6 +10,7 @@ use Composer\Package\PackageInterface;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\PlatformRepository;
+use Composer\Repository\RepositorySet;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -104,7 +105,11 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getVersionSelector(): VersionSelector
     {
-        $object = new Pool();
+        /*
+         * Composer 1 needs Composer\DependencyResolver\Pool
+         * Composer 2 needs Composer\Repository\RepositorySet
+         */
+        $object = \class_exists(RepositorySet::class) ? new RepositorySet() : new Pool();
 
         $object->addRepository($this->getRepository());
 

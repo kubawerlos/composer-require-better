@@ -1,5 +1,6 @@
 {
     "symbol-whitelist": [
+        "Composer\\Repository\\RepositorySet",
         "array",
         "int",
         "parent",
