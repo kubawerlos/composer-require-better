@@ -6,8 +6,6 @@ parameters:
     - ../src
   ignoreErrors:
     - '#^Call to method addRepository\(\) on an unknown class Composer\\Repository\\RepositorySet\.$#'
-    - '#^Class Composer\\Repository\\RepositorySet not found\.$#'
-    - '#^Instantiated class Composer\\Repository\\RepositorySet not found\.$#'
     - '#^Parameter \#1 \$pool of class Composer\\Package\\Version\\VersionSelector constructor expects Composer\\DependencyResolver\\Pool, Composer\\DependencyResolver\\Pool\|Composer\\Repository\\RepositorySet given\.$#'
 
 includes:
