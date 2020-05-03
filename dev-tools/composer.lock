@@ -850,7 +850,7 @@
                 }
             ],
             "description": "Provides configuration for PHP CS Fixer",
-            "time": "2020-05-03T17:02:04+00:00"
+            "time": "2020-05-03T17:28:02+00:00"
         },
         {
             "name": "kubawerlos/php-cs-fixer-custom-fixers",
