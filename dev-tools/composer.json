@@ -1,8 +1,7 @@
 {
     "require-dev": {
         "ergebnis/composer-normalize": "^2.5.1",
-        "friendsofphp/php-cs-fixer": "^2.16.3",
-        "kubawerlos/php-cs-fixer-custom-fixers": "^2.2.0",
+        "kubawerlos/php-cs-fixer-config": "^1.0.0",
         "kubawerlos/types-checker": "^2.0.0",
         "maglnet/composer-require-checker": "^2.1.0",
         "mi-schi/phpmd-extension": "^4.3.0",
@@ -16,6 +15,7 @@
         "analyse": [
             "composer validate --strict --working-dir=..",
             "composer normalize --dry-run ../composer.json",
+            "composer normalize --dry-run",
             "composer-require-checker --config-file=./composer-require-checker.json check ../composer.json",
             "phpcs",
             "php-cs-fixer fix --ansi --diff --dry-run --verbose",
@@ -26,6 +26,7 @@
         ],
         "fix": [
             "composer normalize ../composer.json",
+            "composer normalize",
             "phpcbf || return 0",
             "php-cs-fixer fix --ansi --verbose || return 0"
         ]
