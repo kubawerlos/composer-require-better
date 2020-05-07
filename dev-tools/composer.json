@@ -1,7 +1,7 @@
 {
     "require-dev": {
         "ergebnis/composer-normalize": "^2.5.1",
-        "kubawerlos/php-cs-fixer-config": "^1.0.0",
+        "kubawerlos/php-cs-fixer-config": "^1.2.0",
         "kubawerlos/types-checker": "^2.0.0",
         "maglnet/composer-require-checker": "^2.1.0",
         "mi-schi/phpmd-extension": "^4.3.0",
@@ -19,7 +19,7 @@
             "composer-require-checker --config-file=./composer-require-checker.json check ../composer.json",
             "phpcs",
             "php-cs-fixer fix --ansi --diff --dry-run --verbose",
-            "types-checker --autoloader=../vendor/autoload.php ../src ../tests",
+            "types-checker --autoloader=../vendor/autoload.php --exclude=RequireBetter\\\\Adapter\\\\AdapterInterface ../src ../tests",
             "phpmd ../src text ./phpmd.xml",
             "phpstan analyse --no-progress",
             "psalm --no-progress --shepherd"

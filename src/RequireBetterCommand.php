@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace RequireBetter;
 
 use Composer\Command\RequireCommand;
-use Composer\DependencyResolver\Pool;
+use Composer\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\PlatformRepository;
-use Composer\Repository\RepositorySet;
+use RequireBetter\Adapter\AdapterFactory;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -29,6 +29,16 @@ final class RequireBetterCommand extends RequireCommand
 {
     /** @var string */
     protected static $defaultName = 'rb';
+
+    /** @var AdapterFactory */
+    private $adapterFactory;
+
+    public function __construct()
+    {
+        $this->adapterFactory = new AdapterFactory((string) Composer::getVersion());
+
+        parent::__construct();
+    }
 
     protected function configure(): void
     {
@@ -93,9 +103,9 @@ final class RequireBetterCommand extends RequireCommand
 
         $package = $require['name'];
 
-        $versionSelector = $this->getVersionSelector();
+        $versionSelector = $this->getVersionSelector($targetPhpVersion);
 
-        $bestCandidate = $versionSelector->findBestCandidate($package, '*', $targetPhpVersion);
+        $bestCandidate = $this->adapterFactory->create()->findBestCandidate($versionSelector, $package, $targetPhpVersion);
 
         if (!$bestCandidate instanceof PackageInterface) {
             throw new \RuntimeException(\sprintf('Could not find a stable version of package %s.', $package));
@@ -112,17 +122,15 @@ final class RequireBetterCommand extends RequireCommand
         return \sprintf('%s:%s', $package, $version);
     }
 
-    private function getVersionSelector(): VersionSelector
+    private function getVersionSelector(string $targetPhpVersion): VersionSelector
     {
-        /*
-         * Composer 1 needs Composer\DependencyResolver\Pool
-         * Composer 2 needs Composer\Repository\RepositorySet
-         */
-        $object = \class_exists(RepositorySet::class) ? new RepositorySet() : new Pool();
+        $adapter = $this->adapterFactory->create();
 
-        $object->addRepository($this->getRepository());
+        $repositorySet = $adapter->getRepositorySet();
 
-        return new VersionSelector($object);
+        $repositorySet->addRepository($this->getRepository());
+
+        return $adapter->createVersionSelector($repositorySet, $this->getPlatformRepository());
     }
 
     private function getTargetPhpVersion(): string
@@ -137,16 +145,20 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getRepository(): CompositeRepository
     {
-        $composer = $this->getComposer();
-        $repositories = $composer->getRepositoryManager()->getRepositories();
-
-        /** @var string[] $platformOverrides */
-        $platformOverrides = $composer->getConfig()->get('platform');
+        $repositories = $this->getComposer()->getRepositoryManager()->getRepositories();
 
         return new CompositeRepository(\array_merge(
-            [new PlatformRepository([], $platformOverrides)],
+            [$this->getPlatformRepository()],
             $repositories
         ));
+    }
+
+    private function getPlatformRepository(): PlatformRepository
+    {
+        /** @var string[] $platformOverrides */
+        $platformOverrides = $this->getComposer()->getConfig()->get('platform');
+
+        return new PlatformRepository([], $platformOverrides);
     }
 
     private function normalizeVersion(string $version): string
