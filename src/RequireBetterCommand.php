@@ -145,7 +145,10 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getRepository(): CompositeRepository
     {
-        $repositories = $this->getComposer()->getRepositoryManager()->getRepositories();
+        /** @var Composer $composer */
+        $composer = $this->getComposer();
+
+        $repositories = $composer->getRepositoryManager()->getRepositories();
 
         return new CompositeRepository(\array_merge(
             [$this->getPlatformRepository()],
@@ -155,8 +158,11 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getPlatformRepository(): PlatformRepository
     {
+        /** @var Composer $composer */
+        $composer = $this->getComposer();
+
         /** @var string[] $platformOverrides */
-        $platformOverrides = $this->getComposer()->getConfig()->get('platform');
+        $platformOverrides = $composer->getConfig()->get('platform');
 
         return new PlatformRepository([], $platformOverrides);
     }

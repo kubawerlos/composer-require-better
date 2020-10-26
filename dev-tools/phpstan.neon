@@ -6,7 +6,6 @@ parameters:
     - ../src
   ignoreErrors:
     - '#Composer\\Repository\\RepositorySet#'
-    - '#^Class Composer\\Package\\Version\\VersionSelector constructor invoked with 2 parameters, 1 required\.$#'
 
 includes:
   - ./vendor/phpstan/phpstan-strict-rules/rules.neon

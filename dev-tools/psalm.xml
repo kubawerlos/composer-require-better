@@ -17,6 +17,7 @@
 
     <issueHandlers>
         <PossiblyInvalidArgument errorLevel='suppress' />
+        <PossiblyUndefinedMethod errorLevel='suppress' />
         <PropertyNotSetInConstructor errorLevel='suppress' />
         <TooManyArguments errorLevel='suppress' />
         <UndefinedClass errorLevel='suppress' />
