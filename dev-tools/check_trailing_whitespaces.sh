@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This file is part of PHP CS Fixer (https://github.com/FriendsOfPHP/PHP-CS-Fixer).
 #
 # Copyright (c) 2012-2019 Fabien Potencier
@@ -22,8 +21,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-
-set -eu
+set -Eeuo pipefail
 
 files_with_trailing_whitespaces=$(
     git grep -EIn "\\s$" \
