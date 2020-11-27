@@ -79,4 +79,3 @@ jobs:
         run: |
           composer require --dev --quiet twinh/php-coveralls
           ./vendor/bin/php-coveralls --verbose
-        continue-on-error: true
