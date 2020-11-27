@@ -77,5 +77,6 @@ jobs:
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          composer require --dev twinh/php-coveralls
+          composer require --dev --quiet twinh/php-coveralls
           ./vendor/bin/php-coveralls --verbose
+        continue-on-error: true
