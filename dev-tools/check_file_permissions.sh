@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -Eeuo pipefail
+set -eu
 
 files_with_wrong_permissions=$(
     git ls-files --stage . \
@@ -13,6 +13,7 @@ then
     printf '\033[97;41mWrong permissions detected:\033[0m\n'
     e=$(printf '\033')
     echo "${files_with_wrong_permissions}"
+
     exit 1
 fi
 
