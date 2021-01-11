@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-return PhpCsFixerConfig\Factory::createForLibrary('composer-require-better', 'Kuba Werłos', 2020)
+$config = PhpCsFixerConfig\Factory::createForLibrary('composer-require-better', 'Kuba Werłos', 2020)
     ->setUsingCache(false)
     ->setFinder(
         PhpCsFixer\Finder::create()
@@ -20,3 +20,9 @@ return PhpCsFixerConfig\Factory::createForLibrary('composer-require-better', 'Ku
             ->in(__DIR__ . '/../tests')
             ->append([__FILE__])
     );
+
+$rules = $config->getRules();
+
+unset($rules['use_arrow_functions']); // TODO: remove when dropping support to PHP <7.4
+
+return $config->setRules($rules);
