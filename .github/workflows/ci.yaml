@@ -14,11 +14,14 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
           coverage: none
 
       - name: Check file permissions
         run: ./dev-tools/check_file_permissions.sh
+
+      - name: Composer version
+        run: composer -V
 
       - name: Check trailing whitespaces
         run: ./dev-tools/check_trailing_whitespaces.sh
