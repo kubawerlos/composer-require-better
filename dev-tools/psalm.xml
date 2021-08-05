@@ -20,10 +20,6 @@
         <PossiblyInvalidArgument errorLevel='suppress' />
         <PossiblyUndefinedMethod errorLevel='suppress' />
         <PropertyNotSetInConstructor errorLevel='suppress' />
-        <TooManyArguments errorLevel='suppress' />
-        <UndefinedClass errorLevel='suppress' />
-        <UndefinedDocblockClass errorLevel='suppress' />
         <UnusedClass errorLevel='suppress' />
-        <UnusedParam errorLevel='suppress' />
     </issueHandlers>
 </psalm>

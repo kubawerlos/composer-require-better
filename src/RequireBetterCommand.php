@@ -103,7 +103,7 @@ final class RequireBetterCommand extends RequireCommand
 
         $package = $require['name'];
 
-        $versionSelector = $this->getVersionSelector($targetPhpVersion);
+        $versionSelector = $this->getVersionSelector();
 
         $bestCandidate = $this->adapterFactory->create()->findBestCandidate($versionSelector, $package, $targetPhpVersion);
 
@@ -122,7 +122,7 @@ final class RequireBetterCommand extends RequireCommand
         return \sprintf('%s:%s', $package, $version);
     }
 
-    private function getVersionSelector(string $targetPhpVersion): VersionSelector
+    private function getVersionSelector(): VersionSelector
     {
         $adapter = $this->adapterFactory->create();
 
