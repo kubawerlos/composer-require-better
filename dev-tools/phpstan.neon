@@ -6,6 +6,7 @@ parameters:
     - ../src
   ignoreErrors:
     - '#Composer\\Repository\\RepositorySet#'
+  reportMaybesInPropertyPhpDocTypes: false
 
 includes:
   - ./vendor/phpstan/phpstan/conf/bleedingEdge.neon
