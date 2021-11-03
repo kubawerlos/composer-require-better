@@ -73,10 +73,10 @@ final class RequireBetterCommand extends RequireCommand
         $this->addOption('prefer-lowest');
         $this->addOption('prefer-stable');
 
-        /** @var string[] $packages */
+        /** @var array<string> $packages */
         $packages = $input->getArgument('packages');
 
-        /** @var string[][] $requires */
+        /** @var array<array<string>> $requires */
         $requires = $this->normalizeRequirements($packages);
 
         $input->setArgument(
@@ -93,7 +93,7 @@ final class RequireBetterCommand extends RequireCommand
     }
 
     /**
-     * @param string[] $require
+     * @param array<string> $require
      */
     private function addVersionToPackage(array $require, string $targetPhpVersion): string
     {
