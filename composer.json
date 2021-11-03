@@ -31,25 +31,25 @@
     },
     "autoload": {
         "psr-4": {
-            "RequireBetter\\": "./src/"
+            "RequireBetter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "./tests/"
+            "Tests\\": "tests"
         }
     },
     "scripts": {
         "analyse": [
             "@install-dev-tools",
-            "composer --working-dir=./dev-tools analyse"
+            "@composer --working-dir=.dev-tools analyse"
         ],
         "fix": [
             "@install-dev-tools",
-            "composer --working-dir=./dev-tools fix"
+            "@composer --working-dir=.dev-tools fix"
         ],
         "install-dev-tools": [
-            "composer --working-dir=./dev-tools --quiet install"
+            "@composer --working-dir=.dev-tools --quiet install"
         ],
         "test": [
             "phpunit"

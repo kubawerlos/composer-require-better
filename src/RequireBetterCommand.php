@@ -35,7 +35,7 @@ final class RequireBetterCommand extends RequireCommand
 
     public function __construct()
     {
-        $this->adapterFactory = new AdapterFactory((string) Composer::getVersion());
+        $this->adapterFactory = new AdapterFactory(Composer::getVersion());
 
         parent::__construct();
     }
@@ -161,7 +161,7 @@ final class RequireBetterCommand extends RequireCommand
         /** @var Composer $composer */
         $composer = $this->getComposer();
 
-        /** @var string[] $platformOverrides */
+        /** @var array<string, string> $platformOverrides */
         $platformOverrides = $composer->getConfig()->get('platform');
 
         return new PlatformRepository([], $platformOverrides);
