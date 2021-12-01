@@ -23,5 +23,6 @@ $rules = $config->getRules();
 
 unset($rules['use_arrow_functions']); // TODO: remove when dropping support to PHP <7.4
 unset($rules[PhpCsFixerCustomFixers\Fixer\PromotedConstructorPropertyFixer::name()]); // TODO: remove when dropping support to PHP <8.0
+$rules['trailing_comma_in_multiline'] = true; // TODO: remove when dropping support to PHP <8.0
 
 return $config->setRules($rules);
