@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff98dffec10e787a15a8f2deb1c86f94",
+    "content-hash": "96633d1b1313eeeae3db582f23fd2208",
     "packages": [
         {
             "name": "amphp/amp",
@@ -539,16 +539,16 @@
         },
         {
             "name": "kubawerlos/php-cs-fixer-config",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kubawerlos/php-cs-fixer-config.git",
-                "reference": "1f6d4c89ec77f5d57bd4a8163d64dc3538a463b5"
+                "reference": "94aa678527ff982f6cde81a6536a6f10b8a411cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kubawerlos/php-cs-fixer-config/zipball/1f6d4c89ec77f5d57bd4a8163d64dc3538a463b5",
-                "reference": "1f6d4c89ec77f5d57bd4a8163d64dc3538a463b5"
+                "url": "https://api.github.com/repos/kubawerlos/php-cs-fixer-config/zipball/94aa678527ff982f6cde81a6536a6f10b8a411cd",
+                "reference": "94aa678527ff982f6cde81a6536a6f10b8a411cd"
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "^3.2.1",
@@ -988,21 +988,21 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.10.2",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "1bc74db7cf834662d83abebae265be11bb2eec3a"
+                "reference": "3637949092e6471aeaeca66bc6c016f45e459e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/1bc74db7cf834662d83abebae265be11bb2eec3a",
-                "reference": "1bc74db7cf834662d83abebae265be11bb2eec3a"
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/3637949092e6471aeaeca66bc6c016f45e459e24",
+                "reference": "3637949092e6471aeaeca66bc6c016f45e459e24"
             },
             "require": {
                 "composer/xdebug-handler": "^1.0 || ^2.0",
                 "ext-xml": "*",
-                "pdepend/pdepend": "^2.10.0",
+                "pdepend/pdepend": "^2.10.2",
                 "php": ">=5.3.9"
             },
             "bin": [
@@ -2135,16 +2135,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.13.0",
+            "version": "4.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "cd489407a0219b93cadd04d5aff9845a942f7e5d"
+                "reference": "5cf660f63b548ccd4a56f62d916ee4d6028e01a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/cd489407a0219b93cadd04d5aff9845a942f7e5d",
-                "reference": "cd489407a0219b93cadd04d5aff9845a942f7e5d"
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/5cf660f63b548ccd4a56f62d916ee4d6028e01a3",
+                "reference": "5cf660f63b548ccd4a56f62d916ee4d6028e01a3"
             },
             "require": {
                 "amphp/amp": "^2.4.2",
