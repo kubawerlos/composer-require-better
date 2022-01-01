@@ -1,14 +1,14 @@
 {
     "name": "kubawerlos/composer-require-better",
-    "type": "composer-plugin",
     "description": "Provides a command to require package with constraint having patch version",
+    "license": "MIT",
+    "type": "composer-plugin",
     "keywords": [
         "composer",
         "plugin",
         "require",
         "cli"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Kuba Werłos",
@@ -19,15 +19,12 @@
         "php": "^7.2 || ^8.0",
         "composer-plugin-api": "^1.1.0 || ^2.0.0"
     },
-    "conflict": {
-        "symfony/console": "<3.4"
-    },
     "require-dev": {
         "composer/composer": "^1.8.5 || ^2.0.0",
         "phpunit/phpunit": "^8.5.2 || ^9.0.1"
     },
-    "extra": {
-        "class": "RequireBetter\\RequireBetterPlugin"
+    "conflict": {
+        "symfony/console": "<3.4"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +35,9 @@
         "psr-4": {
             "Tests\\": "tests"
         }
+    },
+    "extra": {
+        "class": "RequireBetter\\RequireBetterPlugin"
     },
     "scripts": {
         "analyse": [

@@ -15,6 +15,14 @@
         "squizlabs/php_codesniffer": "^3.6.1",
         "vimeo/psalm": "^4.13.1"
     },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": false,
+            "ergebnis/composer-normalize": true,
+            "kubawerlos/composer-smaller-lock": true,
+            "phpstan/extension-installer": true
+        }
+    },
     "scripts": {
         "analyse": [
             "./check_file_permissions.sh",
