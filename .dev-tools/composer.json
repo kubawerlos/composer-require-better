@@ -3,7 +3,7 @@
         "php": "^8.0",
         "ergebnis/composer-normalize": "^2.16.0",
         "kubawerlos/composer-smaller-lock": "^1.0.0",
-        "kubawerlos/php-cs-fixer-config": "^3.4.0",
+        "kubawerlos/php-cs-fixer-config": "^3.6.0",
         "kubawerlos/types-checker": "^2.1.0",
         "maglnet/composer-require-checker": "^3.5.1",
         "mi-schi/phpmd-extension": "^4.3.0",
