@@ -95,7 +95,7 @@ final class RequireBetterCommand extends RequireCommand
      */
     private function addVersionToPackage(array $require, string $targetPhpVersion): string
     {
-        if (isset($require['version'])) {
+        if (\array_key_exists('version', $require)) {
             throw new \RuntimeException('Passing version constraint is not allowed, use "require" command to do it.');
         }
 
@@ -135,16 +135,16 @@ final class RequireBetterCommand extends RequireCommand
     {
         $repository = $this->getRepository();
 
-        /** @var PackageInterface $package */
         $package = $repository->findPackage('php', '*');
+        \assert($package instanceof PackageInterface);
 
         return $package->getPrettyVersion();
     }
 
     private function getRepository(): CompositeRepository
     {
-        /** @var Composer $composer */
         $composer = $this->getComposer();
+        \assert($composer instanceof Composer);
 
         $repositories = $composer->getRepositoryManager()->getRepositories();
 
@@ -156,8 +156,8 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getPlatformRepository(): PlatformRepository
     {
-        /** @var Composer $composer */
         $composer = $this->getComposer();
+        \assert($composer instanceof Composer);
 
         /** @var array<string, string> $platformOverrides */
         $platformOverrides = $composer->getConfig()->get('platform');

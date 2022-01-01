@@ -71,8 +71,8 @@ final class Runner
      */
     public function getComposerJsonDecoded(): array
     {
-        /** @var string $content */
         $content = \file_get_contents($this->directory . '/composer.json');
+        \assert(\is_string($content));
 
         return \json_decode($content, true);
     }
