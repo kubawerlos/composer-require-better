@@ -17,7 +17,7 @@ use Composer\Package\PackageInterface;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\PlatformRepository;
-use RequireBetter\Adapter\AdapterFactory;
+use Composer\Repository\RepositorySet;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -27,16 +27,6 @@ final class RequireBetterCommand extends RequireCommand
 {
     /** @var string */
     protected static $defaultName = 'rb';
-
-    /** @var AdapterFactory */
-    private $adapterFactory;
-
-    public function __construct()
-    {
-        $this->adapterFactory = new AdapterFactory(Composer::getVersion());
-
-        parent::__construct();
-    }
 
     protected function configure(): void
     {
@@ -103,7 +93,7 @@ final class RequireBetterCommand extends RequireCommand
 
         $versionSelector = $this->getVersionSelector();
 
-        $bestCandidate = $this->adapterFactory->create()->findBestCandidate($versionSelector, $package, $targetPhpVersion);
+        $bestCandidate = $versionSelector->findBestCandidate($package);
 
         if (!$bestCandidate instanceof PackageInterface) {
             throw new \RuntimeException(\sprintf('Could not find a stable version of package %s.', $package));
@@ -122,13 +112,11 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getVersionSelector(): VersionSelector
     {
-        $adapter = $this->adapterFactory->create();
-
-        $repositorySet = $adapter->getRepositorySet();
+        $repositorySet = new RepositorySet();
 
         $repositorySet->addRepository($this->getRepository());
 
-        return $adapter->createVersionSelector($repositorySet, $this->getPlatformRepository());
+        return new VersionSelector($repositorySet, $this->getPlatformRepository());
     }
 
     private function getTargetPhpVersion(): string
@@ -143,8 +131,7 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getRepository(): CompositeRepository
     {
-        $composer = $this->getComposer();
-        \assert($composer instanceof Composer);
+        $composer = $this->requireComposer();
 
         $repositories = $composer->getRepositoryManager()->getRepositories();
 
@@ -156,8 +143,7 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getPlatformRepository(): PlatformRepository
     {
-        $composer = $this->getComposer();
-        \assert($composer instanceof Composer);
+        $composer = $this->requireComposer();
 
         /** @var array<string, string> $platformOverrides */
         $platformOverrides = $composer->getConfig()->get('platform');
