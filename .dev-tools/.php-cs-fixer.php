@@ -9,6 +9,8 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 $config = PhpCsFixerConfig\Factory::createForLibrary('composer-require-better', 'Kuba Werłos', 2020)
     ->setUsingCache(false)
     ->setFinder(
