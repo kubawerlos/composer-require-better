@@ -16,10 +16,9 @@
     </projectFiles>
 
     <issueHandlers>
-        <MixedArgumentTypeCoercion errorLevel='suppress' />
+        <DeprecatedMethod errorLevel='suppress' />
         <NonInvariantDocblockPropertyType errorLevel='suppress' />
-        <PossiblyInvalidArgument errorLevel='suppress' />
-        <PossiblyUndefinedMethod errorLevel='suppress' />
+        <PropertyNotSetInConstructor errorLevel='suppress' />
         <UnusedClass errorLevel='suppress' />
     </issueHandlers>
 </psalm>

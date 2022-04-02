@@ -40,9 +40,6 @@ jobs:
           - os: ubuntu-latest
             php-version: '7.3'
           - os: ubuntu-latest
-            php-version: '7.4'
-            dev_package: 'composer/composer:^1'
-          - os: ubuntu-latest
             php-version: '8.1'
     runs-on: ${{ matrix.os }}
     steps:
@@ -68,12 +65,6 @@ jobs:
 
       - name: Install dependencies
         run: composer update --no-progress ${{ matrix.composer_flags }}
-
-      - name: Install dev package
-        if: matrix.dev_package
-        run: |
-          composer config minimum-stability dev
-          composer require "${{ matrix.dev_package }}" --prefer-stable --update-with-dependencies
 
       - name: Test
         run: composer test -- --coverage-clover=./build/logs/clover.xml

@@ -17,10 +17,10 @@
     ],
     "require": {
         "php": "^7.2 || ^8.0",
-        "composer-plugin-api": "^1.1.0 || ^2.0.0"
+        "composer-plugin-api": "^2.0.0"
     },
     "require-dev": {
-        "composer/composer": "^1.8.5 || ^2.0.0",
+        "composer/composer": "^2.0.0",
         "phpunit/phpunit": "^8.5.2 || ^9.0.1"
     },
     "conflict": {
@@ -42,11 +42,11 @@
     "scripts": {
         "analyse": [
             "@install-dev-tools",
-            "@composer --working-dir=.dev-tools analyse"
+            "@composer --no-interaction --working-dir=.dev-tools analyse"
         ],
         "fix": [
             "@install-dev-tools",
-            "@composer --working-dir=.dev-tools fix"
+            "@composer --no-interaction --working-dir=.dev-tools fix"
         ],
         "install-dev-tools": [
             "@composer --working-dir=.dev-tools --quiet install"

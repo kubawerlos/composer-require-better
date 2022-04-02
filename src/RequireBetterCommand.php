@@ -17,7 +17,7 @@ use Composer\Package\PackageInterface;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\PlatformRepository;
-use RequireBetter\Adapter\AdapterFactory;
+use Composer\Repository\RepositorySet;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -27,16 +27,6 @@ final class RequireBetterCommand extends RequireCommand
 {
     /** @var string */
     protected static $defaultName = 'rb';
-
-    /** @var AdapterFactory */
-    private $adapterFactory;
-
-    public function __construct()
-    {
-        $this->adapterFactory = new AdapterFactory(Composer::getVersion());
-
-        parent::__construct();
-    }
 
     protected function configure(): void
     {
@@ -81,7 +71,7 @@ final class RequireBetterCommand extends RequireCommand
             'packages',
             \array_map(
                 function (array $require): string {
-                    return $this->addVersionToPackage($require, $this->getTargetPhpVersion());
+                    return $this->addVersionToPackage($require);
                 },
                 $requires
             )
@@ -93,7 +83,7 @@ final class RequireBetterCommand extends RequireCommand
     /**
      * @param array<string> $require
      */
-    private function addVersionToPackage(array $require, string $targetPhpVersion): string
+    private function addVersionToPackage(array $require): string
     {
         if (\array_key_exists('version', $require)) {
             throw new \RuntimeException('Passing version constraint is not allowed, use "require" command to do it.');
@@ -103,7 +93,7 @@ final class RequireBetterCommand extends RequireCommand
 
         $versionSelector = $this->getVersionSelector();
 
-        $bestCandidate = $this->adapterFactory->create()->findBestCandidate($versionSelector, $package, $targetPhpVersion);
+        $bestCandidate = $versionSelector->findBestCandidate($package);
 
         if (!$bestCandidate instanceof PackageInterface) {
             throw new \RuntimeException(\sprintf('Could not find a stable version of package %s.', $package));
@@ -122,23 +112,11 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getVersionSelector(): VersionSelector
     {
-        $adapter = $this->adapterFactory->create();
-
-        $repositorySet = $adapter->getRepositorySet();
+        $repositorySet = new RepositorySet();
 
         $repositorySet->addRepository($this->getRepository());
 
-        return $adapter->createVersionSelector($repositorySet, $this->getPlatformRepository());
-    }
-
-    private function getTargetPhpVersion(): string
-    {
-        $repository = $this->getRepository();
-
-        $package = $repository->findPackage('php', '*');
-        \assert($package instanceof PackageInterface);
-
-        return $package->getPrettyVersion();
+        return new VersionSelector($repositorySet, $this->getPlatformRepository());
     }
 
     private function getRepository(): CompositeRepository
