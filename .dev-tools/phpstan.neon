@@ -4,8 +4,6 @@ parameters:
   level: max
   paths:
     - ../src
-  ignoreErrors:
-    - '#Composer\\Repository\\RepositorySet#'
   reportMaybesInPropertyPhpDocTypes: false
 
 includes:

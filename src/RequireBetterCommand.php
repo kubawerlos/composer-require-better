@@ -70,7 +70,7 @@ final class RequireBetterCommand extends RequireCommand
             'packages',
             \array_map(
                 function (array $require): string {
-                    return $this->addVersionToPackage($require, $this->getTargetPhpVersion());
+                    return $this->addVersionToPackage($require);
                 },
                 $requires
             )
@@ -82,7 +82,7 @@ final class RequireBetterCommand extends RequireCommand
     /**
      * @param array<string> $require
      */
-    private function addVersionToPackage(array $require, string $targetPhpVersion): string
+    private function addVersionToPackage(array $require): string
     {
         if (\array_key_exists('version', $require)) {
             throw new \RuntimeException('Passing version constraint is not allowed, use "require" command to do it.');
@@ -116,16 +116,6 @@ final class RequireBetterCommand extends RequireCommand
         $repositorySet->addRepository($this->getRepository());
 
         return new VersionSelector($repositorySet, $this->getPlatformRepository());
-    }
-
-    private function getTargetPhpVersion(): string
-    {
-        $repository = $this->getRepository();
-
-        $package = $repository->findPackage('php', '*');
-        \assert($package instanceof PackageInterface);
-
-        return $package->getPrettyVersion();
     }
 
     private function getRepository(): CompositeRepository
