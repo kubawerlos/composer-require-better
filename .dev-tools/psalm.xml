@@ -16,6 +16,7 @@
     </projectFiles>
 
     <issueHandlers>
+        <DeprecatedMethod errorLevel='suppress' />
         <NonInvariantDocblockPropertyType errorLevel='suppress' />
         <PropertyNotSetInConstructor errorLevel='suppress' />
         <UnusedClass errorLevel='suppress' />

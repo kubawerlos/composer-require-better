@@ -12,6 +12,7 @@
 namespace RequireBetter;
 
 use Composer\Command\RequireCommand;
+use Composer\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
@@ -120,7 +121,8 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getRepository(): CompositeRepository
     {
-        $composer = $this->requireComposer();
+        $composer = $this->getComposer();
+        \assert($composer instanceof Composer);
 
         $repositories = $composer->getRepositoryManager()->getRepositories();
 
@@ -132,7 +134,8 @@ final class RequireBetterCommand extends RequireCommand
 
     private function getPlatformRepository(): PlatformRepository
     {
-        $composer = $this->requireComposer();
+        $composer = $this->getComposer();
+        \assert($composer instanceof Composer);
 
         /** @var array<string, string> $platformOverrides */
         $platformOverrides = $composer->getConfig()->get('platform');
