@@ -78,7 +78,7 @@ final class RequireBetterPluginTest extends TestCase
 
         self::assertSame(
             [CommandProvider::class => RequireBetterPlugin::class],
-            $plugin->getCapabilities()
+            $plugin->getCapabilities(),
         );
     }
 

@@ -35,7 +35,7 @@ final class RequireBetterCommandTest extends TestCase
 
         self::assertSame(
             'Package name(s) without a version constraint, e.g. foo/bar',
-            $command->getDefinition()->getArgument('packages')->getDescription()
+            $command->getDefinition()->getArgument('packages')->getDescription(),
         );
     }
 
@@ -182,7 +182,7 @@ final class RequireBetterCommandTest extends TestCase
             \json_encode([
                 'name' => 'foo/bar',
                 'version' => $customRepositoryVersion,
-            ])
+            ]),
         );
 
         $runner = new Runner(['repositories' => [['type' => 'path', 'url' => '../foo']]]);
