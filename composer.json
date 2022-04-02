@@ -16,15 +16,12 @@
         }
     ],
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "composer-plugin-api": "^2.0.0"
     },
     "require-dev": {
         "composer/composer": "^2.0.0",
-        "phpunit/phpunit": "^8.5.2 || ^9.0.1"
-    },
-    "conflict": {
-        "symfony/console": "<3.4"
+        "phpunit/phpunit": "^9.5.20"
     },
     "autoload": {
         "psr-4": {
