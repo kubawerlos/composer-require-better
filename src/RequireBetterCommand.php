@@ -12,7 +12,6 @@
 namespace RequireBetter;
 
 use Composer\Command\RequireCommand;
-use Composer\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
