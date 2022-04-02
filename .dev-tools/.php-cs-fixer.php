@@ -11,20 +11,12 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$config = PhpCsFixerConfig\Factory::createForLibrary('composer-require-better', 'Kuba Werłos', 2020)
+return PhpCsFixerConfig\Factory::createForLibrary('composer-require-better', 'Kuba Werłos', 2020)
     ->setUsingCache(false)
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->files()
             ->in(__DIR__ . '/../src')
             ->in(__DIR__ . '/../tests')
-            ->append([__FILE__])
+            ->append([__FILE__]),
     );
-
-$rules = $config->getRules();
-
-unset($rules['use_arrow_functions']); // TODO: remove when dropping support to PHP <7.4
-unset($rules[PhpCsFixerCustomFixers\Fixer\PromotedConstructorPropertyFixer::name()]); // TODO: remove when dropping support to PHP <8.0
-$rules['trailing_comma_in_multiline'] = true; // TODO: remove when dropping support to PHP <8.0
-
-return $config->setRules($rules);

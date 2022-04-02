@@ -38,7 +38,7 @@ final class Runner
 
         \file_put_contents(
             $this->directory . '/composer.json',
-            \json_encode(\array_merge(['require' => new \stdClass()], $composerJsonContent))
+            \json_encode(\array_merge(['require' => new \stdClass()], $composerJsonContent)),
         );
     }
 
@@ -60,7 +60,7 @@ final class Runner
                 '--no-plugins' => true,
                 '--working-dir' => $this->directory,
             ],
-            $parameters
+            $parameters,
         ));
 
         return $applicationTester->getDisplay();

@@ -42,17 +42,15 @@ final class RequireBetterCommand extends RequireCommand
             new InputArgument(
                 'packages',
                 InputArgument::IS_ARRAY | InputArgument::REQUIRED,
-                'Package name(s) without a version constraint, e.g. foo/bar'
+                'Package name(s) without a version constraint, e.g. foo/bar',
             ),
         ]);
 
         $definition->setOptions(
             \array_filter(
                 $definition->getOptions(),
-                static function (InputOption $option): bool {
-                    return $option->getName() !== 'prefer-lowest' && $option->getName() !== 'prefer-stable';
-                }
-            )
+                static fn (InputOption $option): bool => $option->getName() !== 'prefer-lowest' && $option->getName() !== 'prefer-stable',
+            ),
         );
     }
 
@@ -70,11 +68,9 @@ final class RequireBetterCommand extends RequireCommand
         $input->setArgument(
             'packages',
             \array_map(
-                function (array $require): string {
-                    return $this->addVersionToPackage($require);
-                },
-                $requires
-            )
+                fn (array $require): string => $this->addVersionToPackage($require),
+                $requires,
+            ),
         );
 
         return parent::execute($input, $output);
@@ -104,7 +100,7 @@ final class RequireBetterCommand extends RequireCommand
         $this->getIO()->writeError(\sprintf(
             'Using version <info>%s</info> for <info>%s</info>',
             $version,
-            $package
+            $package,
         ));
 
         return \sprintf('%s:%s', $package, $version);
@@ -128,7 +124,7 @@ final class RequireBetterCommand extends RequireCommand
 
         return new CompositeRepository(\array_merge(
             [$this->getPlatformRepository()],
-            $repositories
+            $repositories,
         ));
     }
 
