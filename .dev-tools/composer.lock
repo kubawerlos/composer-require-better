@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fce73af11df3cdb38cc7e500a08a83b0",
+    "content-hash": "ac448501b37996a51af9800dacf8f9bd",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1011,19 +1011,23 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.6.4",
+            "version": "1.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e4cd0c2dd97809fcfdcd1f367ccf0be86c235168"
+                "reference": "cadad14ac63d8a432e01ae89ac5d0ff6fc3b16ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e4cd0c2dd97809fcfdcd1f367ccf0be86c235168",
-                "reference": "e4cd0c2dd97809fcfdcd1f367ccf0be86c235168"
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/cadad14ac63d8a432e01ae89ac5d0ff6fc3b16ab",
+                "reference": "cadad14ac63d8a432e01ae89ac5d0ff6fc3b16ab",
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
             },
             "bin": [
                 "phpstan",
@@ -1035,10 +1039,34 @@
                     "bootstrap.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "PHPStan - PHP Static Analysis Tool"
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "support": {
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/phpstan",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-05-31T13:58:21+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -1078,20 +1106,27 @@
         },
         {
             "name": "phpstan/phpstan-strict-rules",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-strict-rules.git",
-                "reference": "c0b61e25933ca27ff65c66971336dd6e5061d756"
+                "reference": "0c82c96f2a55d8b91bbc7ee6512c94f68a206b43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/c0b61e25933ca27ff65c66971336dd6e5061d756",
-                "reference": "c0b61e25933ca27ff65c66971336dd6e5061d756"
+                "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/0c82c96f2a55d8b91bbc7ee6512c94f68a206b43",
+                "reference": "0c82c96f2a55d8b91bbc7ee6512c94f68a206b43",
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0",
                 "phpstan/phpstan": "^1.6.3"
+            },
+            "require-dev": {
+                "nikic/php-parser": "^4.13.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -1106,10 +1141,16 @@
                     "PHPStan\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "Extra strict and opinionated rules for PHPStan"
+            "description": "Extra strict and opinionated rules for PHPStan",
+            "support": {
+                "issues": "https://github.com/phpstan/phpstan-strict-rules/issues",
+                "source": "https://github.com/phpstan/phpstan-strict-rules/tree/1.2.3"
+            },
+            "time": "2022-05-04T15:20:40+00:00"
         },
         {
             "name": "psr/container",
