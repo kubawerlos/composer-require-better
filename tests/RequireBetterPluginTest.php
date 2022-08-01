@@ -12,7 +12,6 @@
 namespace Tests;
 
 use Composer\Composer;
-use Composer\Console\Application;
 use Composer\IO\IOInterface;
 use Composer\Plugin\Capability\CommandProvider;
 use PHPUnit\Framework\TestCase;
@@ -26,32 +25,6 @@ use RequireBetter\RequireBetterPlugin;
  */
 final class RequireBetterPluginTest extends TestCase
 {
-    public function testActivatingAndDeactivating(): void
-    {
-        $plugin = new RequireBetterPlugin();
-
-        $application = new Application();
-        $composer = $application->getComposer(true, true);
-        $pluginManager = $composer->getPluginManager();
-
-        self::assertEmpty($pluginManager->getPlugins());
-
-        $pluginManager->addPlugin($plugin);
-        self::assertCount(1, $pluginManager->getPlugins());
-        self::assertContainsOnlyInstancesOf(RequireBetterPlugin::class, $pluginManager->getPlugins());
-
-        if (\method_exists($plugin, 'removePlugin')) {
-            $pluginManager->removePlugin($plugin);
-            self::assertEmpty($pluginManager->getPlugins());
-
-            $pluginManager->addPlugin($plugin);
-            self::assertCount(1, $pluginManager->getPlugins());
-            self::assertContainsOnlyInstancesOf(RequireBetterPlugin::class, $pluginManager->getPlugins());
-
-            $pluginManager->uninstallPlugin($plugin);
-        }
-    }
-
     /**
      * @dataProvider providePluginInterfaceUsageDoesNotUsePluginManagerCases
      */
