@@ -220,11 +220,11 @@ final class RequireBetterCommandTest extends TestCase
 
         $runner = new Runner();
         $requireOutput = $runner->run('require', ['packages' => $packages, '--no-update' => true]);
-        $requireOutput = \trim(\preg_replace('/<warning>.*<\/warning>/', '', $requireOutput));
+        $requireOutput = \trim(\preg_replace('/<warning>.+\R/', '', $requireOutput));
 
         $runner = new Runner();
         $requireBetterOutput = $runner->run('rb', ['packages' => $packages, '--no-update' => true]);
-        $requireBetterOutput = \trim(\preg_replace('/<warning>.*<\/warning>/', '', $requireBetterOutput));
+        $requireBetterOutput = \trim(\preg_replace('/<warning>.+\R/', '', $requireBetterOutput));
 
         self::assertSame(4, \levenshtein($requireOutput, $requireBetterOutput));
     }
