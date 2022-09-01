@@ -817,16 +817,16 @@
         },
         {
             "name": "php-cs-fixer/shim",
-            "version": "v3.10.0",
+            "version": "v3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/shim.git",
-                "reference": "b8d0860f783325218e99f4867ada88fae8091539"
+                "reference": "97e4ebbdd718edf9580e547cc0c1515f09f88ff4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/b8d0860f783325218e99f4867ada88fae8091539",
-                "reference": "b8d0860f783325218e99f4867ada88fae8091539"
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/97e4ebbdd718edf9580e547cc0c1515f09f88ff4",
+                "reference": "97e4ebbdd718edf9580e547cc0c1515f09f88ff4"
             },
             "require": {
                 "ext-json": "*",
