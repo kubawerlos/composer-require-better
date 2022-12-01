@@ -1,5 +1,9 @@
 # composer-require-better
 
+This repository is abandoned,
+use [`composer bump`](https://getcomposer.org/doc/03-cli.md#bump) instead.
+----
+
 Plugin for [Composer](https://getcomposer.org) to require package with constraint having [patch version](https://semver.org).
 
 [![Current version](https://img.shields.io/packagist/v/kubawerlos/composer-require-better.svg?label=Current%20version)](https://packagist.org/packages/kubawerlos/composer-require-better)

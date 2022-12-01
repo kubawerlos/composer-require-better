@@ -3,6 +3,7 @@
     "description": "Provides a command to require package with constraint having patch version",
     "license": "MIT",
     "type": "composer-plugin",
+    "abandoned": true,
     "keywords": [
         "composer",
         "plugin",
