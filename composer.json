@@ -22,6 +22,7 @@
     },
     "require-dev": {
         "composer/composer": "^2.0.0",
+        "nikic/php-parser": "^4.19",
         "phpunit/phpunit": "^9.5.20"
     },
     "autoload": {
